@@ -13,25 +13,27 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredEvents = (
-    (!type
-      ? data?.events
-      : data?.events) || []
-  ).filter((event, index) => {
-    if (
-      (currentPage - 1) * PER_PAGE <= index &&
-      PER_PAGE * currentPage > index
-    ) {
-      return true;
+  console.log("data :", data?.events, "fin data");
+  console.log("!type", !type);
+  const filteredEvents = ((!type ? data?.events : data?.events) || []).filter(
+    (event, index) => {
+      if (
+        (currentPage - 1) * PER_PAGE <= index &&
+        PER_PAGE * currentPage > index
+      ) {
+        return true;
+      }
+      return false;
     }
-    return false;
-  });
+  );
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
+    console.log("evtType:", evtType);
   };
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
+  console.log("typeList", typeList);
   return (
     <>
       {error && <div>An error occured</div>}
@@ -59,6 +61,7 @@ const EventList = () => {
               </Modal>
             ))}
           </div>
+
           <div className="Pagination">
             {[...Array(pageNumber || 0)].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key

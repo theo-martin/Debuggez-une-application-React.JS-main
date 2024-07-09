@@ -20,6 +20,10 @@ const Select = ({
     setValue(newValue);
     setCollapsed(newValue);
   };
+  console.log("categorie :", value);
+  console.log("========");
+  console.log("selection:", selection);
+  console.log("========");
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -88,7 +92,7 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
 Select.defaultProps = {
   onChange: () => null,
@@ -96,6 +100,6 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
-}
+};
 
 export default Select;

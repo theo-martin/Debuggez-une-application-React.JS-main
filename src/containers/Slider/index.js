@@ -16,7 +16,7 @@ const Slider = () => {
       () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
-    console.log("numero index slider: ", index);
+    // console.log("numero index slider: ", index);
   };
   useEffect(() => {
     nextCard();
